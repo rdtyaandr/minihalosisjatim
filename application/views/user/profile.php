@@ -57,7 +57,6 @@
                                 <!-- <a href="<?= BASE_URL ?>user/profile_update" class="btn btn-success pull-right">Update Profile</a> -->
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

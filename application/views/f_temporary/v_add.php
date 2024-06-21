@@ -1,89 +1,73 @@
-<style>
-    .form-container {
-        width: 50%;
-        margin: 0 auto;
-        background-color: #f5f5f5;
-        padding: 20px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-item {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #333;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-size: 16px;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-</style>
-
-<section class="">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="form-container">
-                    <div class="form-item">
-                        <label for="jenis">Jenis Barang</label>
-                        <select id="jenis">
-                            <option value="">Select</option>
-                            <option value="UPC">UPC</option>
-                            <option value="APC">APC</option>
-                        </select>
-                    </div>
-                    <div class="form-item">
-                        <label for="jenis">Jenis</label>
-                        <select id="jenis">
-                            <option value="">Select</option>
-                            <option value="PC">PC</option>
-                            <option value="Printer">Printer</option>
-                        </select>
-                    </div>
-
-                    <div class="form-item">
-                        <label for="lokasi">Lokasi</label>
-                        <input type="text" id="lokasi" placeholder="Enter Location">
-                    </div>
-                    <div class="form-item">
-                        <label for="tahun">Tahun</label>
-                        <input type="number" id="tahun" placeholder="Enter Year">
-                    </div>
-                    <div class="form-item">
-                        <label for="nilai">Nilai</label>
-                        <input type="number" id="nilai" placeholder="Enter Value">
-                    </div>
-                    <div class="form-item">
-                        <button id="add_item">Add Item</button>
+<section class="forms mt-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card custom-border-radius">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Add Data Form -->
+                                    <form id="addDataForm">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 form-control-label" for="jenisBarang">Jenis Barang</label>
+                                                <div class="col-sm-6">
+                                                    <select id="jenisBarang" class="form-control">
+                                                        <option value="">Select</option>
+                                                        <option value="UPC">UPC</option>
+                                                        <option value="APC">APC</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 form-control-label" for="jenis">Jenis</label>
+                                                <div class="col-sm-6">
+                                                    <select id="jenis" class="form-control">
+                                                        <option value="">Select</option>
+                                                        <option value="PC">PC</option>
+                                                        <option value="Printer">Printer</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 form-control-label" for="lokasi">Lokasi</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="lokasi" class="form-control" placeholder="Enter Location">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 form-control-label" for="tahun">Tahun</label>
+                                                <div class="col-sm-6">
+                                                    <input type="number" id="tahun" class="form-control" placeholder="Enter Year">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-sm-2 form-control-label" for="nilai">Nilai</label>
+                                                <div class="col-sm-6">
+                                                    <input type="number" id="nilai" class="form-control" placeholder="Enter Value">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                <button type="button" class="btn btn-success pull-right" onclick="addData()">Add Item</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- End Add Data Form -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>

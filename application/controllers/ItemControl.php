@@ -8,9 +8,9 @@ class ItemControl extends My_Controller
         $this->setHeaderFooter('global/header.php', 'global/footer.php');
     }
     
-     public function delete_item()
+    public function delete_item()
     {
         $data['title'] = 'Hapus';
-        $this->render('Hapus', 'f_temporary/v_barang', $data);
+        $this->render('Hapus', 'f_temporary/v_hapusitem', $data);
     }
 }

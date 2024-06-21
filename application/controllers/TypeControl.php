@@ -11,6 +11,6 @@ class TypeControl extends My_Controller
      public function type()
     {
         $data['title'] = 'Type';
-        $this->render('Type', 'f_temporary/v_jenis', $data);
+        $this->render('Type', 'f_temporaryp/v_jenis', $data);
     }
 }
