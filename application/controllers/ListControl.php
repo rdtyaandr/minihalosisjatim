@@ -29,15 +29,15 @@ class ListControl extends My_Controller
         redirect('minihalosisjatim/ListControl/list');
     }
 
-    public function edit_item($id)
+    public function edit_item($id = null)
     {
+        if ($id === null) {
+            // Redirect user back to the item list or show an error message
+            $this->session->set_flashdata('error', 'No ID provided for editing.');
+
+        }
+    
         // membaca validasi form input
-        $this->form_validation->set_rules(
-            'name',
-            'Nama',
-            'required',
-            ['required' => '%s Harus Diisi']
-        );
         $this->form_validation->set_rules(
             'connector',
             'Connector',
@@ -52,7 +52,7 @@ class ListControl extends My_Controller
         );
         $this->form_validation->set_rules(
             'location',
-            'Kocation',
+            'Location',
             'required',
             ['required' => '%s Harus Diisi']
         );
@@ -68,28 +68,30 @@ class ListControl extends My_Controller
             'required',
             ['required' => '%s Harus Diisi']
         );
-
+    
         if ($this->form_validation->run() == FALSE) {
             $data = array(
                 'title' => 'Edit',
-                'ald' => $this->list_model->getalldata(),
-                'imn' => $this->list_model->detail_data($id),
+                'ald' => $this->List_model->getalldata(),
+                'imn' => $this->List_model->detail_data($id),
             );
+            // Ensure no null values are passed to the view
+            $data = array_map(function($value) {
+                return $value === null ? '' : $value;
+            }, $data);
             $this->render('Edit', 'f_temporary/v_edit', $data);
         } else {
             $data = array(
                 'id' => $id,
-                'name' => $this->input->post('name') ?: '',
                 'connector' => $this->input->post('connector') ?: '',
                 'hardware' => $this->input->post('hardware') ?: '',
                 'location' => $this->input->post('location') ?: '',
                 'year' => $this->input->post('year') ?: '',
                 'value' => $this->input->post('value') ?: '',
             );
-            $this->list_model->update_data($data);
+            $this->List_model->update_data($data);
             $this->session->set_flashdata('pesan', 'Data Berhasil Diupdate');
             redirect('minihalosisjatim/listcontrol/list');
         }
     }
-
 }

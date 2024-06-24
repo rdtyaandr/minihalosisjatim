@@ -16,7 +16,7 @@
                                     echo '<div class="col-sm-12"><div class="card bg-danger text-white shadow"><div class="card-body">' . $error_upload . '</div></div></div>';
                                 }
                                 ?>
-                                <?= form_open('minihalosisjatim/listcontrol/edit/'. $imn->id)?>
+                                <?= form_open('minihalosisjatim/listcontrol/edit_item/'. $imn->id)?>
                                 <form id="addDataForm">
                                     <div class="form-group">
                                         <div class="row">

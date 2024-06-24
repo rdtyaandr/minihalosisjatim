@@ -42,7 +42,7 @@
                                         <td>
                                         <a href="<?= base_url('minihalosisjatim/ListControl/delete_item/' . $value->id) ?>"
                                              onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delete</a>
-                                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                             <a href="<?= base_url() ?>minihalosisjatim/ListControl/edit_item/" class="btn btn-warning btn-sm">Edit</a>
                                         </td>
                                         </center>
                                     </tr>
