@@ -6,13 +6,15 @@ class ListControl extends My_Controller
     {
         parent::__construct();
         parent::requireLogin();
+        $this->load->model('item/m_item');
         $this->setHeaderFooter('global/header.php', 'global/footer.php');
         $this->load->model('list/List_model');
 
     }
     
-     public function list()
+    public function list()
     {
+<<<<<<< HEAD
         $data['title'] = 'List';
         $data['item'] = $this->List_model->getalldata();
         $this->render('List', 'f_temporary/v_list', $data);
@@ -39,4 +41,21 @@ class ListControl extends My_Controller
         
     }
 
+=======
+        $data = array(
+            'title' => 'List',
+            'imn' => $this->m_item->all_data(),
+        );
+        $this->render('List', 'f_temporary/v_list', $data);
+    }
+
+    public function edit()
+    {
+        $data = array(
+            'title' => 'Edit',
+            'imn' => $this->m_item->all_data(),
+        );
+        $this->render('Edit', 'f_temporary/v_edit', $data);
+    }
+>>>>>>> origin/master
 }

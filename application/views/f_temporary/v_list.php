@@ -50,6 +50,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <!-- End List Data -->
                     </div>
                 </div>
             </div>

@@ -1,2 +1,3 @@
 # Setiap file PHP menggunakan LF sebagai karakter baris
 *.php text eol=lf
+* text=auto
