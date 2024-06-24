@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 172.17.0.1
--- Generation Time: Mar 27, 2020 at 05:42 AM
--- Server version: 5.7.29-0ubuntu0.18.04.1
--- PHP Version: 7.2.13
+-- Host: 127.0.0.1
+-- Generation Time: Jun 21, 2024 at 09:46 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,9 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `minihalosisjatim`
+-- Database: `tiket_demo`
 --
-CREATE DATABASE IF NOT EXISTS `minihalosisjatim`;
 
 -- --------------------------------------------------------
 
@@ -36,7 +34,7 @@ CREATE TABLE `attachments` (
   `uploaded_by` varchar(100) DEFAULT NULL,
   `ref` int(11) DEFAULT NULL,
   `ext` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `attachments`
@@ -53,6 +51,21 @@ INSERT INTO `attachments` (`id`, `name`, `path`, `uploaded_by`, `ref`, `ext`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `item_manage`
+--
+
+CREATE TABLE `item_manage` (
+  `id` int(15) NOT NULL,
+  `connector` varchar(50) DEFAULT NULL,
+  `hardware` varchar(100) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
+  `year` date DEFAULT NULL,
+  `value` int(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `messages`
 --
 
@@ -60,13 +73,13 @@ CREATE TABLE `messages` (
   `id` int(11) NOT NULL,
   `ticket` varchar(50) NOT NULL,
   `message` text NOT NULL,
-  `data` text,
+  `data` text DEFAULT NULL,
   `owner` varchar(100) NOT NULL,
   `ref` int(11) NOT NULL,
   `created` int(11) NOT NULL,
-  `type` int(11) DEFAULT '0',
-  `to` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` int(11) DEFAULT 0,
+  `to` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `messages`
@@ -113,12 +126,12 @@ CREATE TABLE `tickets` (
   `updated` int(11) NOT NULL,
   `created` int(11) NOT NULL,
   `status` int(11) NOT NULL,
-  `severity` int(11) DEFAULT '0',
-  `priority` int(11) DEFAULT '0',
-  `cc` text,
-  `data` text,
+  `severity` int(11) DEFAULT 0,
+  `priority` int(11) DEFAULT 0,
+  `cc` text DEFAULT NULL,
+  `data` text DEFAULT NULL,
   `category` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tickets`
@@ -149,7 +162,7 @@ CREATE TABLE `users` (
   `status` int(11) NOT NULL,
   `created` int(11) NOT NULL,
   `updated` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
@@ -158,7 +171,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `username`, `password`, `type`, `status`, `created`, `updated`) VALUES
 (1, 'Demo Admin', 'admin.demo@tikaj.com', '9999999999', 'admin.demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 80, 1, 1568270653, 1568270653),
 (2, 'Demo User', 'user.demo@tikaj.com', '9999999999', 'user.demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 10, 1, 1569649164, 1569649164),
-(3, 'Demo Agent', 'agent.demo@tikaj.com', '9999999999', 'agent.demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 60, 1, 1569649194, 1569649194);
+(3, 'Demo Agent', 'agent.demo@tikaj.com', '9999999999', 'agent.demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 60, 1, 1569649194, 1569649194),
+(4, 'saya', 'saya@gmail.com', 'jghjg', 'saya.demo', '123', 80, 1, 678456, 3568658);
 
 --
 -- Indexes for dumped tables
@@ -168,6 +182,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `username`, `password`, `t
 -- Indexes for table `attachments`
 --
 ALTER TABLE `attachments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `item_manage`
+--
+ALTER TABLE `item_manage`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -199,6 +219,12 @@ ALTER TABLE `attachments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
+-- AUTO_INCREMENT for table `item_manage`
+--
+ALTER TABLE `item_manage`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -214,7 +240,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
