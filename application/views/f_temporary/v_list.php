@@ -8,7 +8,13 @@
                         <h3 class="h4"><i class="fa fa-list"></i> Data List</h3>
                     </div>
                     <div class="card-body">
-                        <!-- List Data -->
+                        <?php
+                        if ($this->session->flashdata('pesan')) {
+                            echo '<div class="alert alert-success" id="flash-msg">';
+                            echo $this->session->flashdata('pesan');
+                            echo '</div>';
+                        }
+                        ?>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -35,7 +41,8 @@
                                             <td><?= $value->year ?></td>
                                             <td><?= $value->value ?></td>
                                             <td>
-                                                <a href="<?= BASE_URL ?>listcontrol/edit" class="btn btn-primary btn-sm">Edit</a>
+                                                <a href="<?= BASE_URL ?>listcontrol/edit/<?= $value->id ?>"
+                                                    class="btn btn-primary btn-sm">Edit</a>
                                                 <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>

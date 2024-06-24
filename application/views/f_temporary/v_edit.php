@@ -7,16 +7,37 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- Add Data Form -->
+                                <?php
+                                // notif validasi form
+                                echo validation_errors('<div class="col-sm-12"><div class="card bg-danger text-white shadow"><div class="card-body">', '</div></div></div>');
+
+                                //notif gagal upload
+                                if (isset($error_upload)) {
+                                    echo '<div class="col-sm-12"><div class="card bg-danger text-white shadow"><div class="card-body">' . $error_upload . '</div></div></div>';
+                                }
+                                ?>
+                                <?= form_open('minihalosisjatim/listcontrol/edit/'. $imn->id)?>
                                 <form id="addDataForm">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-sm-2 form-control-label" for="name">Nama</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="name" id="name" class="form-control" value="<?= $imn->name ?>" placeholder="Nama">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="jenisBarang">Jenis
                                                 Barang</label>
                                             <div class="col-sm-6">
-                                                <select id="jenisBarang" class="form-control" value="<?= $value->connector ?>">
-                                                    <option value="">Select</option>
-                                                    <option value="UPC">UPC</option>
-                                                    <option value="APC">APC</option>
+                                                <select id="jenisBarang" name="connector" class="form-control">
+                                                    <?php
+                                                    foreach ($ald as $item) {
+                                                        $selected = ($imn->connector == $item->connector) ? 'selected' : '';
+                                                        echo "<option value='{$item->connector}' $selected>{$item->connector}</option>";
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -25,10 +46,13 @@
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="jenis">Jenis</label>
                                             <div class="col-sm-6">
-                                                <select id="jenis" class="form-control">
-                                                    <option value="">Select</option>
-                                                    <option value="PC">PC</option>
-                                                    <option value="Printer">Printer</option>
+                                                <select id="jenis" name="hardware" class="form-control">
+                                                    <?php
+                                                    foreach ($ald as $item) {
+                                                        $selected = ($imn->hardware == $item->hardware) ? 'selected' : '';
+                                                        echo "<option value='{$item->hardware}' $selected>{$item->hardware}</option>";
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -37,8 +61,8 @@
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="lokasi">Lokasi</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="lokasi" class="form-control"
-                                                    placeholder="Enter Location">
+                                                <input type="text" id="lokasi" name="location" class="form-control"
+                                                    placeholder="Enter Location" value="<?= $imn->location ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -46,8 +70,8 @@
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="tahun">Tahun</label>
                                             <div class="col-sm-6">
-                                                <input type="number" id="tahun" class="form-control"
-                                                    placeholder="Enter Year">
+                                                <input type="date" id="tahun" name="year" class="form-control"
+                                                    placeholder="Enter Year" value="<?= $imn->year ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -55,19 +79,19 @@
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="nilai">Nilai</label>
                                             <div class="col-sm-6">
-                                                <input type="number" id="nilai" class="form-control"
-                                                    placeholder="Enter Value">
+                                                <input type="number" id="nilai" name="value" class="form-control"
+                                                    placeholder="Enter Value" value="<?= $imn->value ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-8">
-                                            <button type="button" class="btn btn-success pull-right"
-                                                onclick="addData()">Add Item</button>
+                                            <button type="submit" class="btn btn-success pull-right">Add Item</button>
                                         </div>
                                     </div>
                                 </form>
                                 <!-- End Add Data Form -->
+                                <?= form_close() ?>
                             </div>
                         </div>
                     </div>
