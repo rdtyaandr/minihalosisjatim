@@ -11,11 +11,8 @@ class ItemControl extends My_Controller
     
     public function delete_item($id = null)
     {
-
-        $data['ald'] = $this->actmodel->all_data();
         $this->actmodel->hapus($id);
-        $this->render('Hapus', 'f_temporary/v_list', $data);
-        
+        redirect('minihalosisjatim/listcontrol/list');
     }   
 
     public function edit_item($id)

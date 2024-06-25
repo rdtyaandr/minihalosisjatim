@@ -21,15 +21,13 @@
 
 <li><a href="<?= BASE_URL ?>user/profile"> <i class="fa fa-user"></i>Profile </a></li>
 
+<li><a href="#ManagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="bi bi-gear"></i>Menage</a>
+    <ul id="ManagesDropdown" class="collapse list-unstyled ">
+        <li><a href="<?= BASE_URL ?>managecontrol/type">Type</a></li>
+        <li><a href="<?= BASE_URL ?>ManageControl/location">Location</a></li>
+    </ul>
+</li>
+
 <li><a href="<?= BASE_URL ?>itemcontrol/add_item"><i class="bi bi-plus-circle"></i>Add </a></li>
 
 <li><a href="<?= BASE_URL ?>listcontrol/list"><i class="bi bi-list-nested"></i>List </a></li>
-
-<li><a href="#ManagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="bi bi-gear"></i>Menage</a>
-<ul id="ManagesDropdown" class="collapse list-unstyled ">
-    <li><a href="<?= BASE_URL ?>managecontrol/type">Type</a></li>
-    <li><a href="<?= BASE_URL ?>ManageControl/location">Location</a></li>
-</ul>
-</li>
-
-<li><a href="<?= BASE_URL ?>itemcontrol/delete_item"><i class="fa fa-list"></i>Hapus Barang</a></li>
