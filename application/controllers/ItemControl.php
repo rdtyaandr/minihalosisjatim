@@ -63,7 +63,7 @@ class ItemControl extends My_Controller
         } else {
             $data = array(
                 'id' => $id,
-                'name' => $this->input->post('name') ?: '',
+                
                 'connector' => $this->input->post('connector') ?: '',
                 'hardware' => $this->input->post('hardware') ?: '',
                 'location' => $this->input->post('location') ?: '',
@@ -81,11 +81,14 @@ class ItemControl extends My_Controller
         $data['title'] = 'Add';
 
         $this->form_validation->set_rules('connector', 'Connector', 'required');
+        $this->form_validation->set_rules('hardware','Hardware', 'required');
+        $this->form_validation->set_rules('location','Location','required');
 
         if ($this->form_validation->run() == FALSE) {
             // jika data gagal
 
             $this->render('Add', 'f_temporary/v_add', $data);
+            // jika data berhasil
         } else {
             $data = array(
                 'connector' => $this->input->post('connector'),

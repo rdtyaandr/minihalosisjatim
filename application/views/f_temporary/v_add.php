@@ -15,7 +15,7 @@
                             <div class="row"> 
                                 <div class="col-md-12">
                                     <!-- Add Data Form -->
-                                    <?= form_open('minihalosisjatim/addcontrol') ?>
+                                    <?= form_open('minihalosisjatim/itemcontrol/add_item') ?>
                                     <form id="addDataForm">
                                         <div class="form-group">
                                             <div class="row">

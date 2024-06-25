@@ -134,7 +134,7 @@
                         </div>
                         <!-- Navbar Menu -->
                         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                            <li class="dotted-add-button"><a href="<?= BASE_URL ?>addcontrol/add"><i class="fa fa-plus-square"></i> Add Stuff</a></li>
+                            <li class="dotted-add-button"><a href="<?= BASE_URL ?>itemcontrol/add_item"><i class="fa fa-plus-square"></i> Add Stuff</a></li>
 
 
                             <li class="nav-item dropdown">
