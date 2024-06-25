@@ -24,7 +24,7 @@
                                 </thead>
                                 <tbody id="data-list">
                                     <?php $no = 1;
-                                     foreach ($item as $i => $value) : ?>
+                                     foreach ($ald as $i => $value) : ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $value->connector; ?></td>
@@ -33,7 +33,7 @@
                                         <td><?= $value->year; ?></td>
                                         <td><?= $value->value; ?></td>
                                         <td>
-                                        <a href="<?= base_url('minihalosisjatim/ItemControl/list/' . $value->id) ?>"
+                                        <a href="<?= base_url('minihalosisjatim/itemcontrol/delete_item/' . $value->id) ?>"
                                              onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>

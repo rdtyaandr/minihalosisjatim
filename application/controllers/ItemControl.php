@@ -11,9 +11,7 @@ class ItemControl extends My_Controller
     
     public function delete_item($id = null)
     {
-        if ($id === NULL) {
-            $this->session->set_flashdata('error', 'No ID provided for deletion.');
-        }
+
         $data['ald'] = $this->actmodel->all_data();
         $this->actmodel->hapus($id);
         $this->render('Hapus', 'f_temporary/v_list', $data);
