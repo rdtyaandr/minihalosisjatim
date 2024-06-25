@@ -7,16 +7,19 @@ class ListControl extends My_Controller
         parent::__construct();
         parent::requireLogin();
         $this->setHeaderFooter('global/header.php', 'global/footer.php');
-        $this->load->model('list/List_model');
+        $this->load->model('actmodel');
 
     }
     
     public function list()
     {
-        $data['title'] = 'List';
-        $data['item'] = $this->List_model->getalldata();
+        $data = array(
+            'title' => 'List',
+            'ald' => $this->actmodel->all_data(),
+        );
         $this->render('List', 'f_temporary/v_list', $data);
     }
+<<<<<<< HEAD
 
     public function delete_item($id = null)
     {
@@ -94,4 +97,6 @@ class ListControl extends My_Controller
             redirect('minihalosisjatim/listcontrol/list');
         }
     }
+=======
+>>>>>>> origin/master
 }

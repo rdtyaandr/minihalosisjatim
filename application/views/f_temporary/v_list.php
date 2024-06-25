@@ -19,19 +19,20 @@
                             <table class="table table-striped" id="data-table">
                                 <thead>
                                     <tr>
-                                    <th>ID</th>
-                                            <th>Connector</th>
-                                            <th>Hardware</th>
-                                            <th>Location</th>
-                                            <th>Years</th>
-                                            <th>Value</th>  
-                                            <th>Action</th>
+                                        <th>ID</th>
+                                        <th>Connector</th>
+                                        <th>Hardware</th>
+                                        <th>Location</th>
+                                        <th>Years</th>
+                                        <th>Value</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php $no = 1;
-                                     foreach ($item as $i => $value) : ?>
+                                    <?php $no = 1;
+                                    foreach ($ald as $KEY => $value): ?>
                                         <center>
+<<<<<<< HEAD
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $value->connector; ?></td>
@@ -44,8 +45,24 @@
                                              onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delete</a>
                                              <a href="<?= base_url() ?>minihalosisjatim/ListControl/edit_item/" class="btn btn-warning btn-sm">Edit</a>
                                         </td>
+=======
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $value->connector; ?></td>
+                                                <td><?= $value->hardware; ?></td>
+                                                <td><?= $value->location; ?></td>
+                                                <td><?= $value->year; ?></td>
+                                                <td><?= $value->value; ?></td>
+                                                <td>
+                                                    <a href="<?= base_url('minihalosisjatim/itemcontrol/edit_item/' . $value->id) ?>"
+                                                        class="btn btn-warning btn-sm">Edit</a>
+                                                    <a href="<?= base_url('minihalosisjatim/itemcontrol/delete_item/' . $value->id) ?>"
+                                                        onclick="return confirm('Yakin ingin hapus data?')"
+                                                        class="btn btn-danger btn-sm">Delete</a>
+                                                </td>
+>>>>>>> origin/master
                                         </center>
-                                    </tr>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>

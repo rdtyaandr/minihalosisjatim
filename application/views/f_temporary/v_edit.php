@@ -16,16 +16,12 @@
                                     echo '<div class="col-sm-12"><div class="card bg-danger text-white shadow"><div class="card-body">' . $error_upload . '</div></div></div>';
                                 }
                                 ?>
+<<<<<<< HEAD
                                 <?= form_open('minihalosisjatim/listcontrol/edit_item/'. $imn->id)?>
+=======
+                                <?= form_open('minihalosisjatim/itemcontrol/edit_item/'. $imn->id)?>
+>>>>>>> origin/master
                                 <form id="addDataForm">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <label class="col-sm-2 form-control-label" for="name">Nama</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" id="name" class="form-control" value="<?= $imn->name ?>" placeholder="Nama">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="jenisBarang">Jenis
@@ -86,7 +82,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-8">
-                                            <button type="submit" class="btn btn-success pull-right">Add Item</button>
+                                            <button type="submit" class="btn btn-success pull-right">Edit Item</button>
                                         </div>
                                     </div>
                                 </form>
