@@ -22,9 +22,9 @@
                                                 <label class="col-sm-2 form-control-label" for="jenisBarang">Jenis Barang</label>
                                                 <div class="col-sm-6">
                                                     <select id="connector" class="form-control" name="connector">
-                                                        <option value="">Select</option>
-                                                        <option value="UPC">UPC</option>
-                                                        <option value="APC">APC</option>
+                                                    <?php foreach ($barang as $k) : ?>
+                                                        <option value="<?= $k;?>" selected><?= $k;?></option>
+                                             <?php endforeach;?>  
                                                     </select>
                                                 </div>
                                             </div>

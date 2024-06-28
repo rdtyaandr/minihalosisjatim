@@ -31,5 +31,3 @@
     <li><a href="<?= BASE_URL ?>ManageControl/location">Location</a></li>
 </ul>
 </li>
-
-<li><a href="<?= BASE_URL ?>itemcontrol/delete_item"><i class="fa fa-list"></i>Hapus Barang</a></li>
