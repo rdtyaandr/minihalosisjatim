@@ -9,21 +9,16 @@ class ActModel extends My_Model
         return $this->db->get()->result();
     }
 
-    //untuk edit data
-    public function unique_nbarang()
+    //untuk edit data dan edit data
+    public function unique_value($column)
     {
         $this->db->distinct();
-        $this->db->select('nama_barang');
+        $this->db->select($column);
         $query = $this->db->get('pc_printer');
         return $query->result();
     }
-    public function unique_merek()
-    {
-        $this->db->distinct();
-        $this->db->select('merek');
-        $query = $this->db->get('pc_printer');
-        return $query->result();
-    }
+
+    //untu edit data
     public function get_by_id($id_pcp)
     {
         $this->db->where('id_pcp', $id_pcp);
@@ -34,6 +29,13 @@ class ActModel extends My_Model
     {
         $this->db->where('id_pcp', $id_pcp);
         return $this->db->update('pc_printer', $data);
+    }
+
+    //untuk add data 
+    public function add_data($data)
+    {
+        $this->db->insert('pc_printer', $data);
+        return $this->db->insert_id();
     }
 
     //untuk hapus data

@@ -22,6 +22,8 @@
                                 <option value="20">20</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="999999999999999">All Data</option>
                             </select>
                             <input type="text" class="form-control form-control-sm mr-2" id="search-input"
                                 placeholder="Search...">

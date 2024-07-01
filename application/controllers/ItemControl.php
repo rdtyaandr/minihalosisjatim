@@ -18,8 +18,8 @@ class ItemControl extends My_Controller
      // Fungsi untuk menampilkan form edit data dan memperbarui data
     public function edit_item($id_pcp) {
         // Ambil data produk berdasarkan id
-        $data['nbarang'] = $this->actmodel->unique_nbarang();
-        $data['merek'] = $this->actmodel->unique_merek();
+        $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
+        $data['merek'] = $this->actmodel->unique_value('merek');
         $data['by_id'] = $this->actmodel->get_by_id($id_pcp);
 
         if (empty($data['by_id'])) {
@@ -76,7 +76,8 @@ class ItemControl extends My_Controller
             $data = array(
                 'id_pcp' => $id_pcp,
                 'nama_barang' => $this->input->post('nama_barang'),
-                'lokasi' => $this->input->post('lokasi'),
+                'merek' => $this->input->post('merek'),
+                'nama_satker' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
                 'kondisi' => $this->input->post('kondisi')
@@ -88,34 +89,67 @@ class ItemControl extends My_Controller
 
     public function add_item()
     {
-        $data['title'] = 'Add';
-        $data['barang'] =['Scanner(Peralatan Personal Komputer','Modul Untuk Penambahan Core Di Switch','Switch','Wireless Access Point','Firewall','Rak Server','Server','Capture Card','External','Viewer(Peralatan Personal Komputer','P.C Unit','Auto Switch/Data Switch','Storage Modul Disk
-        (Peralatan Mainware)','Ultra Mobile P.C.','Tablet P.C','Note Book','Lap Top','Printer(Peralatan Personal Komputer)'];
+        // Ambil data produk berdasarkan id
+        $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
+        $data['merek'] = $this->actmodel->unique_value('merek');
 
-        $this->form_validation->set_rules('connector', 'Connector', 'required');
-        $this->form_validation->set_rules('hardware','Hardware', 'required');
-        $this->form_validation->set_rules('location','Location','required');
+        // Aturan validasi
+        $config = array(
+            array(
+                'field' => 'nama_barang',
+                'label' => 'Nama Barang',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+            ),
+            array(
+                'field' => 'merek',
+                'label' => 'Merek',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+            ),
+            array(
+                'field' => 'lokasi',
+                'label' => 'Lokasi',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+            ),
+            array(
+                'field' => 'tahun',
+                'label' => 'Tahun',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+            ),
+            array(
+                'field' => 'kode_barang',
+                'label' => 'Kode Barang',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+            ),
+            array(
+                'field' => 'kondisi',
+                'label' => 'Kondisi',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+            )
+        );
 
+        $this->form_validation->set_rules($config);
+
+        // Jika validasi gagal atau form belum disubmit, tampilkan form
         if ($this->form_validation->run() == FALSE) {
-            // jika data gagal
-
             $this->render('Add', 'f_temporary/v_add', $data);
-            // jika data berhasil
         } else {
+            // Jika validasi berhasil, perbarui data produk
             $data = array(
-                'connector' => $this->input->post('nama_barang'),
-                'hardware' => $this->input->post('merek'),
-                'location' => $this->input->post('nama_satker'),
-                'year' => $this->input->post('tgl_perolehan'),
-                'value' => $this->input->post('kode_barang'),
-                'kondisi'=> $this->input->post('kondisi')
+                'nama_barang' => $this->input->post('nama_barang'),
+                'merek' => $this->input->post('merek'),
+                'nama_satker' => $this->input->post('lokasi'),
+                'tgl_perolehan' => $this->input->post('tahun'),
+                'kode_barang' => $this->input->post('kode_barang'),
+                'kondisi' => $this->input->post('kondisi')
             );
-            $this->actmodel->add($data);
-            $this->session->set_flashdata('flash', 'has been added');
-            redirect('minihalosisjatim/listcontrol/list');
-
-
-
+            $this->actmodel->add_data($data);
+            redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         }
     }
 }

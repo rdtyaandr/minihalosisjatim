@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-8">
-                                            <button type="submit" class="btn btn-success pull-right">Edit Item</button>
+                                            <button type="submit" class="btn btn-success pull-right">Edit</button>
                                         </div>
                                     </div>
                                 </form>
