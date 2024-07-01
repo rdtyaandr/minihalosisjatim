@@ -23,7 +23,7 @@
                                 <option value="25">25</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
-                                <option value="999999999999999">All Data</option>
+                                <option value="all">All Data</option>
                             </select>
                             <input type="text" class="form-control form-control-sm mr-2" id="search-input"
                                 placeholder="Search...">
@@ -40,6 +40,7 @@
                                         <th>Location</th>
                                         <th>Years</th>
                                         <th>Value</th>
+                                        <th>Condition</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -89,7 +90,11 @@
         let numRowsPerPage = parseInt(selectElement.value); // default number of rows per page
 
         selectElement.addEventListener('change', function () {
-            numRowsPerPage = parseInt(this.value);
+            if (this.value === 'all') {
+                numRowsPerPage = tableRows.length; // set number of rows per page to total rows if 'all' is selected
+            } else {
+                numRowsPerPage = parseInt(this.value);
+            }
             currentPage = 0; // reset current page to 0 when number of rows per page changes
             updateTable();
         });
