@@ -33,14 +33,15 @@
                             <table class="table table-striped" id="data-table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Connector</th>
-                                        <th>Hardware</th>
-                                        <th>Location</th>
-                                        <th>Years</th>
-                                        <th>Value</th>
+                                        <th>No</th>
+                                        <th>NUP</th>
+                                        <th>Nama Barang</th>
+                                        <th>Merek</th>
+                                        <th>Lokasi</th>
+                                        <th>Tanggal Perolehan</th>
+                                        <th>Kode Barang</th>
                                         <th>Condition</th>
-                                        <th>Action</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,12 +49,13 @@
                                     foreach ($ald as $KEY => $value) : ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
-                                            <td style="<?= empty($value->nama_barang) || $value->nama_barang == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->nama_barang ?: '(No Data)' ?></td>
-                                            <td style="<?= empty($value->merek) || $value->merek == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->merek ?: '(No Data)' ?></td>
-                                            <td style="<?= empty($value->nama_satker) || $value->nama_satker == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->nama_satker ?: '(No Data)' ?></td>
-                                            <td style="<?= empty($value->tgl_perolehan) || $value->tgl_perolehan == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= !empty($value->tgl_perolehan) ? date('d F Y', strtotime($value->tgl_perolehan)) : '(No Data)' ?></td>
-                                            <td style="<?= empty($value->kode_barang) || $value->kode_barang == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->kode_barang ?: '(No Data)' ?></td>
-                                            <td style="<?= empty($value->kondisi) || $value->kondisi == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->kondisi ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->nup) ? 'color: #d3d3d3' : '' ?>"><?= $value->nup ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->nama_barang) ? 'color: #d3d3d3' : '' ?>"><?= $value->nama_barang ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->merek) ? 'color: #d3d3d3' : '' ?>"><?= $value->merek ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->lokasi) || $value->lokasi == '-' ? 'color: #d3d3d3' : '' ?>"><?= ($value->lokasi == '-' ? '(No Data)' : $value->lokasi) ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->tgl_perolehan) ? 'color: #d3d3d3' : '' ?>"><?= !empty($value->tgl_perolehan) ? date('d F Y', strtotime($value->tgl_perolehan)) : '(No Data)' ?></td>
+                                            <td style="<?= empty($value->kode_barang) ? 'color: #d3d3d3' : '' ?>"><?= $value->kode_barang ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->kondisi) ? 'color: #d3d3d3' : '' ?>"><?= $value->kondisi ?: '(No Data)' ?></td>
                                             <td>
                                                 <a href="<?= base_url('minihalosisjatim/itemcontrol/edit_item/' . $value->id) ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                                 <a href="<?= base_url('minihalosisjatim/itemcontrol/detail_item/' . $value->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-search-plus"></i></a>

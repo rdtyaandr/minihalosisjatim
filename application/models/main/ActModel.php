@@ -5,8 +5,9 @@ class ActModel extends My_Model
     public function all_data()
     {
         $this->db->select('*');
-        $this->db->from('main');
-        return $this->db->get()->result();
+        $this->db->where('(nup IS NULL OR nup IN (SELECT nup FROM main WHERE nup IS NOT NULL GROUP BY nup HAVING COUNT(*) = 1))', NULL, FALSE);
+        $query = $this->db->get('main');
+        return $query->result();
     }
 
     //untuk edit data dan edit data
