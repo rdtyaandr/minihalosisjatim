@@ -9,18 +9,18 @@ class ItemControl extends My_Controller
         $this->load->model('main/actmodel');
     }
     
-    public function delete_item($id_pcp)
+    public function delete_item($id)
     {
-        $this->actmodel->hapus($id_pcp);
+        $this->actmodel->hapus($id);
         redirect('minihalosisjatim/listcontrol/list');
     }
 
      // Fungsi untuk menampilkan form edit data dan memperbarui data
-    public function edit_item($id_pcp) {
+    public function edit_item($id) {
         // Ambil data produk berdasarkan id
         $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
         $data['merek'] = $this->actmodel->unique_value('merek');
-        $data['by_id'] = $this->actmodel->get_by_id($id_pcp);
+        $data['by_id'] = $this->actmodel->get_by_id($id);
 
         if (empty($data['by_id'])) {
             show_404();
@@ -74,7 +74,7 @@ class ItemControl extends My_Controller
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
-                'id_pcp' => $id_pcp,
+                'id' => $id,
                 'nama_barang' => $this->input->post('nama_barang'),
                 'merek' => $this->input->post('merek'),
                 'nama_satker' => $this->input->post('lokasi'),
@@ -82,7 +82,7 @@ class ItemControl extends My_Controller
                 'kode_barang' => $this->input->post('kode_barang'),
                 'kondisi' => $this->input->post('kondisi')
             );
-            $this->actmodel->update_data($id_pcp, $data);
+            $this->actmodel->update_data($id, $data);
             redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         }
     }

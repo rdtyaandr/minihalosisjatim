@@ -25,8 +25,7 @@
                                 <option value="100">100</option>
                                 <option value="all">All Data</option>
                             </select>
-                            <input type="text" class="form-control form-control-sm mr-2" id="search-input"
-                                placeholder="Search...">
+                            <input type="text" class="form-control form-control-sm mr-2" id="search-input" placeholder="Search...">
                         </div>
                     </div>
                     <div class="card-body">
@@ -46,21 +45,19 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1;
-                                    foreach ($ald as $KEY => $value): ?>
+                                    foreach ($ald as $KEY => $value) : ?>
                                         <tr>
-                                        <td><?= $no++ ?></td>
-                                            <td><?= $value->nama_barang; ?></td>
-                                            <td><?= $value->merek; ?></td>
-                                            <td><?= $value->nama_satker; ?></td>
-                                            <td><?= $value->tgl_perolehan; ?></td>
-                                            <td><?= $value->kode_barang; ?></td>
-                                            <td><?= $value->kondisi; ?></td>
+                                            <td><?= $no++ ?></td>
+                                            <td style="<?= empty($value->nama_barang) || $value->nama_barang == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->nama_barang ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->merek) || $value->merek == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->merek ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->nama_satker) || $value->nama_satker == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->nama_satker ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->tgl_perolehan) || $value->tgl_perolehan == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= !empty($value->tgl_perolehan) ? date('d F Y', strtotime($value->tgl_perolehan)) : '(No Data)' ?></td>
+                                            <td style="<?= empty($value->kode_barang) || $value->kode_barang == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->kode_barang ?: '(No Data)' ?></td>
+                                            <td style="<?= empty($value->kondisi) || $value->kondisi == '0000-00-00' ? 'color: #d3d3d3' : '' ?>"><?= $value->kondisi ?: '(No Data)' ?></td>
                                             <td>
-                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/edit_item/' . $value->id_pcp) ?>"
-                                                    class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/delete_item/' . $value->id_pcp) ?>"
-                                                    onclick="return confirm('Yakin ingin hapus data?')"
-                                                    class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/edit_item/' . $value->id) ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/detail_item/' . $value->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-search-plus"></i></a>
+                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/delete_item/' . $value->id) ?>" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -89,7 +86,7 @@
         let currentPage = 0;
         let numRowsPerPage = parseInt(selectElement.value); // default number of rows per page
 
-        selectElement.addEventListener('change', function () {
+        selectElement.addEventListener('change', function() {
             if (this.value === 'all') {
                 numRowsPerPage = tableRows.length; // set number of rows per page to total rows if 'all' is selected
             } else {
@@ -99,20 +96,20 @@
             updateTable();
         });
 
-        searchInput.addEventListener('input', function () {
+        searchInput.addEventListener('input', function() {
             currentPage = 0; // reset to first page on search
             updateTable();
         });
 
         function addPaginationListeners(prevId, nextId) {
-            document.getElementById(prevId).addEventListener('click', function () {
+            document.getElementById(prevId).addEventListener('click', function() {
                 if (currentPage > 0) {
                     currentPage--;
                     updateTable();
                 }
             });
 
-            document.getElementById(nextId).addEventListener('click', function () {
+            document.getElementById(nextId).addEventListener('click', function() {
                 if (currentPage < Math.ceil(getFilteredRows().length / numRowsPerPage) - 1) {
                     currentPage++;
                     updateTable();

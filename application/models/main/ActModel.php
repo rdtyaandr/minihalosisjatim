@@ -5,7 +5,7 @@ class ActModel extends My_Model
     public function all_data()
     {
         $this->db->select('*');
-        $this->db->from('pc_printer');
+        $this->db->from('main');
         return $this->db->get()->result();
     }
 
@@ -14,35 +14,35 @@ class ActModel extends My_Model
     {
         $this->db->distinct();
         $this->db->select($column);
-        $query = $this->db->get('pc_printer');
+        $query = $this->db->get('main');
         return $query->result();
     }
 
     //untu edit data
-    public function get_by_id($id_pcp)
+    public function get_by_id($id)
     {
-        $this->db->where('id_pcp', $id_pcp);
-        $query = $this->db->get('pc_printer');
+        $this->db->where('id', $id);
+        $query = $this->db->get('main');
         return $query->row();
     }
-    public function update_data($id_pcp, $data)
+    public function update_data($id, $data)
     {
-        $this->db->where('id_pcp', $id_pcp);
-        return $this->db->update('pc_printer', $data);
+        $this->db->where('id', $id);
+        return $this->db->update('main', $data);
     }
 
     //untuk add data 
     public function add_data($data)
     {
-        $this->db->insert('pc_printer', $data);
+        $this->db->insert('main', $data);
         return $this->db->insert_id();
     }
 
     //untuk hapus data
-    public function hapus($id_pcp)
+    public function hapus($id)
     {
-        $this->db->where('id_pcp', $id_pcp);
-        $this->db->delete('pc_printer');
+        $this->db->where('id', $id);
+        $this->db->delete('main');
     }
 }
 ?>

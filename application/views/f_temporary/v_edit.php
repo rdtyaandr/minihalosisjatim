@@ -8,7 +8,7 @@
                             <div class="col-md-12">
                                 <!-- Add Data Form -->
                                 <?php echo validation_errors('<div class="col-sm-12"><div class="card bg-danger text-white shadow"><div class="card-body">', '</div></div></div>');    ?>
-                                <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/itemcontrol/edit_item/' . $by_id->id_pcp) ?>">
+                                <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/itemcontrol/edit_item/' . $by_id->id) ?>">
                                     <div class="form-group">
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="jenisBarang">Nama
