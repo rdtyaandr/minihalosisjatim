@@ -7,13 +7,14 @@
             <div class="row">
               <div class="col-md-12">
                 <!-- Data List -->
+                <?php echo validation_errors('<div class="col-sm-12"><div class="card bg-danger text-white shadow"><div class="card-body">', '</div></div></div>');    ?>
                 <ul id="data-list" class="list-group">
                   <?php foreach ($ald as $a) : ?>
                     <li class="list-group-item"><?= $a->merek; ?></li>
                   <?php endforeach; ?>
                 </ul>
                 <!-- Add Data Form -->
-                  <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/managecontrol/add_type') ?>">
+                <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/managecontrol/add_type') ?>">
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-12 text-center">
