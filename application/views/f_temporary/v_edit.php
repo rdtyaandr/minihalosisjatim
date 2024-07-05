@@ -36,7 +36,7 @@
                                         <div class="row">
                                             <label class="col-sm-2 form-control-label" for="lokasi">Lokasi</label>
                                             <div class="col-sm-6">
-                                                <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Enter Location" value="<?= $by_id->nama_satker ?>">
+                                                <input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="Enter Location" value="<?= $by_id->lokasi ?>">
                                             </div>
                                         </div>
                                     </div>

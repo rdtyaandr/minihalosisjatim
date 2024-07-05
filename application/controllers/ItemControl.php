@@ -77,8 +77,8 @@ class ItemControl extends My_Controller
             $data = array(
                 'id' => $id,
                 'nama_barang' => $this->input->post('nama_barang'),
-                'merek' => $this->input->post('id_merek'),
-                'nama_satker' => $this->input->post('lokasi'),
+                'id_merek' => $this->input->post('merek'),
+                'lokasi' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
                 'kondisi' => $this->input->post('kondisi')
@@ -144,8 +144,8 @@ class ItemControl extends My_Controller
             // Jika validasi berhasil, perbarui data produk
             $data = array(
                 'nama_barang' => $this->input->post('nama_barang'),
-                'merek' => $this->input->post('id_merek'),
-                'nama_satker' => $this->input->post('lokasi'),
+                'id_merek' => $this->input->post('merek'),
+                'lokasi' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
                 'kondisi' => $this->input->post('kondisi')

@@ -34,9 +34,9 @@ class ManageControl extends My_Controller
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
-                'type' => $this->input->post('type')
+                'merek' => $this->input->post('type')
             );
-            $this->actmodel->add_data($data);
+            $this->mngmodel->add_data($data);
             redirect('minihalosisjatim/managecontrol/type'); 
         }
     }

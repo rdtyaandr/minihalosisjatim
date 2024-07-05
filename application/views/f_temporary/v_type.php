@@ -13,14 +13,14 @@
                   <?php endforeach; ?>
                 </ul>
                 <!-- Add Data Form -->
-                <form id="addDataForm">
+                  <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/managecontrol/add_type') ?>">
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-12 text-center">
                         <input type="text" id="type" name="type" class="form-control" placeholder="Enter new data">
                       </div>
                       <div class="col-sm-12 text-center mt-2">
-                        <button type="button" class="btn btn-success" onclick="addData()">Add Item</button>
+                        <button type="submit" class="btn btn-success">Add Item</button>
                       </div>
                     </div>
                   </div>
@@ -63,16 +63,3 @@
     padding: 30px;
   }
 </style>
-
-<script>
-  function addData() {
-    var newData = document.getElementById("newData").value;
-    if (newData !== "") {
-      var dataList = document.getElementById("data-list");
-      var newListItem = document.createElement("LI");
-      newListItem.textContent = newData;
-      dataList.appendChild(newListItem);
-      document.getElementById("newData").value = "";
-    }
-  }
-</script>

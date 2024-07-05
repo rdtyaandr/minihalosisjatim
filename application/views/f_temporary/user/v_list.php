@@ -49,7 +49,7 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $value->nama_barang; ?></td>
                                             <td><?= $value->merek; ?></td>
-                                            <td><?= $value->nama_satker; ?></td>
+                                            <td><?= $value->lokasi; ?></td>
                                             <td><?= $value->tgl_perolehan; ?></td>
                                             <td><?= $value->kode_barang; ?></td>
                                             <td><?= $value->kondisi; ?></td>
