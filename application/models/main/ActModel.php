@@ -1,25 +1,34 @@
 <?php
 class ActModel extends My_Model
 {
-    //untuk nampilkan data
+    //untuk nampilkan data dengan relasi
     public function all_data()
     {
-        $this->db->select('*');
+        $this->db->select('main.*, tb_merek.merek'); 
+        $this->db->from('main');
+        $this->db->join('tb_merek', 'tb_merek.id_merek = main.id_merek', 'left'); 
         $this->db->where('(nup IS NULL OR nup IN (SELECT nup FROM main WHERE nup IS NOT NULL GROUP BY nup HAVING COUNT(*) = 1))', NULL, FALSE);
-        $query = $this->db->get('main');
-        return $query->result();
+        return $this->db->get()->result();
+    }
+    public function all_data_type()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_merek');
+        return $this->db->get()->result();
     }
 
-    //untuk edit data dan edit data
+    //untuk edit data
     public function unique_value($column)
     {
         $this->db->distinct();
         $this->db->select($column);
+        $this->db->where("$column IS NOT NULL");
+        $this->db->where("$column <>", '');
+        $this->db->where("$column <>", '-');
         $query = $this->db->get('main');
         return $query->result();
     }
 
-    //untu edit data
     public function get_by_id($id)
     {
         $this->db->where('id', $id);

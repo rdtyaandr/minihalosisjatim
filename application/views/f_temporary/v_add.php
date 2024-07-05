@@ -11,16 +11,9 @@
                                 <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/itemcontrol/add_item') ?>">
                                     <div class="form-group">
                                         <div class="row">
-                                            <label class="col-sm-2 form-control-label" for="jenisBarang">Nama Barang</label>
+                                            <label class="col-sm-2 form-control-label" for="nama_barang">Nama Barang</label>
                                             <div class="col-sm-6">
-                                                <select id="nama_Barang" name="nama_barang" class="form-control">
-                                                    <option value="">Select Item Name</option>
-                                                    <?php foreach ($nbarang as $b) : ?>
-                                                        <option value="<?php echo $b->nama_barang; ?>">
-                                                            <?php echo $b->nama_barang; ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
-                                                </select>
+                                                <input type="text" id="nama_barang" name="nama_barang" class="form-control" placeholder="Enter Item Name">
                                             </div>
                                         </div>
                                     </div>
@@ -29,9 +22,9 @@
                                             <label class="col-sm-2 form-control-label" for="jenis">Merek</label>
                                             <div class="col-sm-6">
                                                 <select id="merek" name="merek" class="form-control">
-                                                    <option value="">Select Brand</option>
+                                                    <option value="" disabled selected style="color: #A9A9A9;">Select Brand</option>
                                                     <?php foreach ($merek as $m) : ?>
-                                                        <option value="<?php echo $m->merek; ?>">
+                                                        <option value="<?php echo $m->id_merek; ?>">
                                                             <?php echo $m->merek; ?>
                                                         </option>
                                                     <?php endforeach; ?>

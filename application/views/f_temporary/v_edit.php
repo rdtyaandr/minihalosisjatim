@@ -11,16 +11,9 @@
                                 <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/itemcontrol/edit_item/' . $by_id->id) ?>">
                                     <div class="form-group">
                                         <div class="row">
-                                            <label class="col-sm-2 form-control-label" for="jenisBarang">Nama
-                                                Barang</label>
+                                            <label class="col-sm-2 form-control-label" for="nama_barang">Nama Barang</label>
                                             <div class="col-sm-6">
-                                                <select id="nama_Barang" name="nama_barang" class="form-control">
-                                                    <?php foreach ($nbarang as $b) : ?>
-                                                        <option value="<?php echo $b->nama_barang; ?>" <?php echo set_select('b', $b->nama_barang, ($b->nama_barang == $by_id->nama_barang)); ?>>
-                                                            <?php echo $b->nama_barang; ?>
-                                                        </option>
-                                                    <?php endforeach; ?>
-                                                </select>
+                                                <input type="text" id="nama_barang" name="nama_barang" class="form-control" placeholder="Enter Item Name" value="<?= $by_id->nama_barang ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -29,8 +22,9 @@
                                             <label class="col-sm-2 form-control-label" for="jenis">Merek</label>
                                             <div class="col-sm-6">
                                                 <select id="merek" name="merek" class="form-control">
+                                                    <option value="" disabled selected style="color: #A9A9A9;">Select Brand</option>
                                                     <?php foreach ($merek as $m) : ?>
-                                                        <option value="<?php echo $m->merek; ?>" <?php echo set_select('m', $m->merek, ($m->merek == $by_id->merek)); ?>>
+                                                        <option value="<?php echo $m->id_merek; ?>" <?php echo set_select('m', $m->id_merek, ($m->id_merek == $by_id->id_merek)); ?>>
                                                             <?php echo $m->merek; ?>
                                                         </option>
                                                     <?php endforeach; ?>

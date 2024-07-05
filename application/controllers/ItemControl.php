@@ -19,8 +19,9 @@ class ItemControl extends My_Controller
     public function edit_item($id) {
         // Ambil data produk berdasarkan id
         $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
-        $data['merek'] = $this->actmodel->unique_value('merek');
+        $data['id_merek'] = $this->actmodel->unique_value('id_merek');
         $data['by_id'] = $this->actmodel->get_by_id($id);
+        $data['merek'] = $this->actmodel->all_data_type();
 
         if (empty($data['by_id'])) {
             show_404();
@@ -76,7 +77,7 @@ class ItemControl extends My_Controller
             $data = array(
                 'id' => $id,
                 'nama_barang' => $this->input->post('nama_barang'),
-                'merek' => $this->input->post('merek'),
+                'merek' => $this->input->post('id_merek'),
                 'nama_satker' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
@@ -91,7 +92,8 @@ class ItemControl extends My_Controller
     {
         // Ambil data produk berdasarkan id
         $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
-        $data['merek'] = $this->actmodel->unique_value('merek');
+        $data['id_merek'] = $this->actmodel->unique_value('id_merek');
+        $data['merek'] = $this->actmodel->all_data_type();
 
         // Aturan validasi
         $config = array(
@@ -142,7 +144,7 @@ class ItemControl extends My_Controller
             // Jika validasi berhasil, perbarui data produk
             $data = array(
                 'nama_barang' => $this->input->post('nama_barang'),
-                'merek' => $this->input->post('merek'),
+                'merek' => $this->input->post('id_merek'),
                 'nama_satker' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
