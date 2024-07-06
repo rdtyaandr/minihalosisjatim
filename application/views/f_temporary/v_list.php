@@ -15,6 +15,7 @@
                             </button>
                         </div>
                         <div class="d-flex align-items-center">
+                            <a href="<?= base_url('minihalosisjatim/itemcontrol/add_item/') ?>" class="btn btn-info btn-sm mr-2"><i class="fa fa-plus" aria-hidden="true"></i></a>
                             <select class="form-control form-control-sm mr-2" id="entries-select">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
