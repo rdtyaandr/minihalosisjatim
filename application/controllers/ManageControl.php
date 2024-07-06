@@ -18,6 +18,7 @@ class ManageControl extends My_Controller
     public function add_type()
     {
         $data['ald'] = $this->mngmodel->all_data();
+        $data['ald'] = $this->mngmodel->all_data();
         // Aturan validasi
         $config = array(
             array(
