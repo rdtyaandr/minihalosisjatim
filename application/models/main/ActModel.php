@@ -16,6 +16,12 @@ class ActModel extends My_Model
         $this->db->from('tb_merek');
         return $this->db->get()->result();
     }
+    public function all_data_locate()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_lokasi');
+        return $this->db->get()->result();
+    }
 
     //untuk edit data
     public function unique_value($column)

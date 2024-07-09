@@ -6,19 +6,20 @@ class ManageControl extends My_Controller
         parent::__construct();
         parent::requireLogin();
         $this->setHeaderFooter('global/header.php', 'global/footer.php');
-        $this->load->model('main/mngmodel');
+        $this->load->model('main/typmodel');
         $this->load->model('main/LctModel');
     }
 
     public function type()
     {
-        $data['ald'] = $this->mngmodel->all_data();
+        $data['ald'] = $this->typmodel->all_data();
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         $this->render('Type', 'f_temporary/v_type', $data);
     }
     public function add_type()
     {
-        $data['ald'] = $this->mngmodel->all_data();
-        $data['ald'] = $this->mngmodel->all_data();
+        $data['ald'] = $this->typmodel->all_data();
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         // Aturan validasi
         $config = array(
             array(
@@ -39,15 +40,16 @@ class ManageControl extends My_Controller
             $data = array(
                 'merek' => $this->input->post('type')
             );
-            $this->mngmodel->add_data($data);
+            $this->typmodel->add_data($data);
             redirect('minihalosisjatim/managecontrol/type'); 
         }
     }
-
+    
     public function edit_type($idMerek)
     {
-        $data['ald'] = $this->mngmodel->all_data();
-        $data['by_id'] = $this->mngmodel->get_by_id($idMerek);
+        $data['ald'] = $this->typmodel->all_data();
+        $data['by_id'] = $this->typmodel->get_by_id($idMerek);
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         // Aturan validasi
         $config = array(
             array(
@@ -55,27 +57,27 @@ class ManageControl extends My_Controller
                 'label' => 'Type',
                 'rules' => 'required',
                 'errors' => array('required' => '%s harus diisi.')
-            )
-        );
+                )
+            );
 
-        $this->form_validation->set_rules($config);
-
-        // Jika validasi gagal atau form belum disubmit, tampilkan form
-        if ($this->form_validation->run() == FALSE) {
+            $this->form_validation->set_rules($config);
+            
+            // Jika validasi gagal atau form belum disubmit, tampilkan form
+            if ($this->form_validation->run() == FALSE) {
             $this->render('Type', 'f_temporary/v_type', $data);
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
                 'merek' => $this->input->post('type')
             );
-            $this->mngmodel->edit_data($idMerek, $data);
+            $this->typmodel->edit_data($idMerek, $data);
             redirect('minihalosisjatim/managecontrol/type'); 
         }
     }
     
     public function delete_item($idMerek)
     {
-        $this->mngmodel->hapus($idMerek);
+        $this->typmodel->hapus($idMerek);
         redirect('minihalosisjatim/managecontrol/type');
     }
 
@@ -88,34 +90,72 @@ class ManageControl extends My_Controller
     public function Location()
     {
         $data['ald'] = $this->LctModel->all_data();
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         $this->render('Location', 'f_temporary/v_location', $data);
     }
-
+    
+    
     public function add_location()
     {
-        $data['ald'] = $this->mngmodel->all_data();
+        $data['ald'] = $this->LctModel->all_data();
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         // Aturan validasi
         $config = array(
             array(
-                'field' => 'type',
-                'label' => 'Type',
+                'field' => 'location',
+                'label' => 'Location',
                 'rules' => 'required',
                 'errors' => array('required' => '%s harus diisi.')
-            )
-        );
-
+                )
+            );
+            
         $this->form_validation->set_rules($config);
-
+        
         // Jika validasi gagal atau form belum disubmit, tampilkan form
         if ($this->form_validation->run() == FALSE) {
-            $this->render('Type', 'f_temporary/v_type', $data);
+            $this->render('Location', 'f_temporary/v_location', $data);
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
-                'merek' => $this->input->post('type')
+                'location' => $this->input->post('location')
             );
-            $this->mngmodel->add_data($data);
-            redirect('minihalosisjatim/managecontrol/type'); 
+            $this->LctModel->add_data($data);
+            redirect('minihalosisjatim/managecontrol/location'); 
         }
+    }
+    public function edit_location($idLocation)
+    {
+        $data['ald'] = $this->LctModel->all_data();
+        $data['by_id'] = $this->LctModel->get_by_id($idLocation);
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
+        // Aturan validasi
+        $config = array(
+            array(
+                'field' => 'location',
+                'label' => 'Location',
+                'rules' => 'required',
+                'errors' => array('required' => '%s harus diisi.')
+                )
+            );
+            
+            $this->form_validation->set_rules($config);
+
+        // Jika validasi gagal atau form belum disubmit, tampilkan form
+        if ($this->form_validation->run() == FALSE) {
+            $this->render('Location', 'f_temporary/v_location', $data);
+        } else {
+            // Jika validasi berhasil, perbarui data produk
+            $data = array(
+                'location' => $this->input->post('location')
+            );
+            $this->LctModel->edit_data($idLocation, $data);
+            redirect('minihalosisjatim/managecontrol/location');
+        }
+    }
+
+    public function delete_locate($idLocation)
+    {
+        $this->LctModel->hapus($idLocation);
+        redirect('minihalosisjatim/managecontrol/location');
     }
 }

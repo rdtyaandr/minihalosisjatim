@@ -40,6 +40,8 @@
 <script src="<?= BASE_URL ?>assets/js/library.js"></script>
 <script src="<?= BASE_URL ?>assets/js/tik-script.js"></script>
 <script src="<?= BASE_URL ?>assets/js/main/bootstrap.bundle.min.js"></script>
+<!-- native js -->
+<script src="<?= BASE_URL ?>assets/js/script.js"></script>
 <script>
     $(document).ready(function() {
         $(function() {

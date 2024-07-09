@@ -49,6 +49,9 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/toastr/toastr.min.css">
 
+    <!-- native design -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+
     <!-- <script src="https://cdn.ckeditor.com/4.12.1/basic/ckeditor.js"></script> -->
     <!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"-->
     <!--            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
@@ -79,7 +82,6 @@
 
     <!-- Chartjs -->
     <script src="<?= BASE_URL ?>assets/vendor/chart.js/Chart.min.js"></script>
-
 
 
     <script type="text/javascript">

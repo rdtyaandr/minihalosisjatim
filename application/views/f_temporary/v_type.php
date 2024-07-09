@@ -159,7 +159,7 @@
                                 <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/managecontrol/add_type') ?>">
                                     <div class="form-group">
                                         <label for="type">Nama Merek</label>
-                                        <input type="text" id="type" name="type" class="form-control" placeholder="Enter Item">
+                                        <input type="text" id="type" name="type" class="form-control" placeholder="Enter type">
                                     </div>
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-success">Add</button>
@@ -195,7 +195,7 @@
                 <input type="hidden" name="id_merek" value="${idMerek}">
                 <div class="form-group">
                   <label for="type">Nama Merek</label>
-                  <input type="text" id="type" name="type" class="form-control" placeholder="Enter Item" value="${merek}">
+                  <input type="text" id="type" name="type" class="form-control" placeholder="Enter type" value="${merek}">
                 </div>
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success">Edit</button>

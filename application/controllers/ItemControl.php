@@ -8,20 +8,22 @@ class ItemControl extends My_Controller
         $this->setHeaderFooter('global/header.php', 'global/footer.php');
         $this->load->model('main/actmodel');
     }
-    
+
     public function delete_item($id)
     {
         $this->actmodel->hapus($id);
         redirect('minihalosisjatim/listcontrol/list');
     }
 
-     // Fungsi untuk menampilkan form edit data dan memperbarui data
-    public function edit_item($id) {
+    // Fungsi untuk menampilkan form edit data dan memperbarui data
+    public function edit_item($id)
+    {
         // Ambil data produk berdasarkan id
         $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
         $data['id_merek'] = $this->actmodel->unique_value('id_merek');
         $data['by_id'] = $this->actmodel->get_by_id($id);
         $data['merek'] = $this->actmodel->all_data_type();
+        $data['active_page'] = 'list'; // Menentukan halaman aktif
 
         if (empty($data['by_id'])) {
             show_404();
@@ -32,38 +34,32 @@ class ItemControl extends My_Controller
             array(
                 'field' => 'nama_barang',
                 'label' => 'Nama Barang',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'merek',
                 'label' => 'Merek',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'lokasi',
                 'label' => 'Lokasi',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'tahun',
                 'label' => 'Tahun',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'kode_barang',
                 'label' => 'Kode Barang',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'kondisi',
                 'label' => 'Kondisi',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             )
         );
 
@@ -71,7 +67,10 @@ class ItemControl extends My_Controller
 
         // Jika validasi gagal atau form belum disubmit, tampilkan form
         if ($this->form_validation->run() == FALSE) {
-            $this->render('Edit', 'f_temporary/v_edit', $data);
+            if (validation_errors()) {
+                $this->session->set_flashdata('error', 'Mohon lengkapi semua.');
+            }
+            $this->render('Edit', 'f_temporary/v_list', $data);
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
@@ -91,47 +90,43 @@ class ItemControl extends My_Controller
     public function add_item()
     {
         // Ambil data produk berdasarkan id
-        $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
-        $data['id_merek'] = $this->actmodel->unique_value('id_merek');
+        $data['ald'] = $this->actmodel->all_data();
         $data['merek'] = $this->actmodel->all_data_type();
+        $data['lokasi'] = $this->actmodel->all_data_locate();
+        $data['active_page'] = 'list'; // Menentukan halaman aktif
+        $data['active_page'] = 'list'; // Menentukan halaman aktif
 
         // Aturan validasi
         $config = array(
             array(
                 'field' => 'nama_barang',
                 'label' => 'Nama Barang',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'merek',
                 'label' => 'Merek',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'lokasi',
                 'label' => 'Lokasi',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'tahun',
                 'label' => 'Tahun',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'kode_barang',
                 'label' => 'Kode Barang',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             ),
             array(
                 'field' => 'kondisi',
                 'label' => 'Kondisi',
-                'rules' => 'required',
-                'errors' => array('required' => '%s harus diisi.')
+                'rules' => 'required'
             )
         );
 
@@ -139,7 +134,10 @@ class ItemControl extends My_Controller
 
         // Jika validasi gagal atau form belum disubmit, tampilkan form
         if ($this->form_validation->run() == FALSE) {
-            $this->render('Add', 'f_temporary/v_add', $data);
+            if (validation_errors()) {
+                $this->session->set_flashdata('error', 'Mohon lengkapi semua.');
+            }
+            redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
@@ -154,4 +152,5 @@ class ItemControl extends My_Controller
             redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         }
     }
+
 }

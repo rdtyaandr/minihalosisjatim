@@ -15,6 +15,7 @@
                             </button>
                         </div>
                         <div class="d-flex align-items-center">
+                            <button class="btn btn-info btn-sm mr-2" id="add-data-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
                             <select class="form-control form-control-sm mr-2" id="entries-select">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
@@ -45,8 +46,10 @@
                                             <td><?= $no++ ?></td>
                                             <td style="<?= empty($value->location) ? 'color: #d3d3d3' : '' ?>"><?= $value->location ?: '(No Data)' ?></td>
                                             <td>
-                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/edit_item/' . $value->id_location) ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                                <a href="<?= base_url('minihalosisjatim/itemcontrol/delete_item/' . $value->id_location) ?>" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                                                <button class="btn btn-warning btn-sm edit-data-btn" data-id="<?= $value->id_location ?>" data-location="<?= $value->location ?>">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                </button>
+                                                <a href="<?= base_url('minihalosisjatim/managecontrol/delete_locate/' . $value->id_location) ?>" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -131,5 +134,79 @@
         addPaginationListeners('prev-page-top', 'next-page-top');
         addPaginationListeners('prev-page-bottom', 'next-page-bottom');
         updateTable(); // initial update
+
+        // Tambahkan event listener untuk tombol "Add Data"
+        document.getElementById('add-data-btn').addEventListener('click', function() {
+            // Tampilkan pop-up form
+            const popupForm = `
+                <div class="modal" id="addDataModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addDataForm" method="post" action="<?= site_url('minihalosisjatim/managecontrol/add_location') ?>">
+                                    <div class="form-group">
+                                        <label for="location">Nama Lokasi</label>
+                                        <input type="text" id="location" name="location" class="form-control" placeholder="Enter location">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Add</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', popupForm);
+            $('#addDataModal').modal('show');
+        });
+
+        // Tambahkan event listener untuk tombol "Edit Data"
+        document.querySelectorAll('.edit-data-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const idLocation = this.getAttribute('data-id');
+                const location = this.getAttribute('data-location');
+                // Tampilkan form pop-up dengan data yang diambil
+                const popupForm = `
+        <div class="modal" id="editDataModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Edit Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                <form id="editDataForm" method="post" action="<?= site_url('minihalosisjatim/managecontrol/edit_location/' . '${idLocation}') ?>">
+                    <input type="hidden" name="id_location" value="${idLocation}">
+                    <div class="form-group">
+                    <label for="location">Nama Location</label>
+                    <input type="text" id="location" name="location" class="form-control" placeholder="Enter location" value="${location}">
+                    </div>
+                    <div class="form-group text-center">
+                    <button type="submit" class="btn btn-success">Edit</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    `;
+                document.body.insertAdjacentHTML('beforeend', popupForm);
+                $('#editDataModal').modal('show');
+            });
+        });
+
+        // Menghapus modal dari DOM setelah ditutup
+        $(document).on('hidden.bs.modal', '#editDataModal', function() {
+            $(this).remove();
+        });
     </script>
 </section>
