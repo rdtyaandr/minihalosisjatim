@@ -16,18 +16,12 @@ class ItemControl extends My_Controller
     }
 
     // Fungsi untuk menampilkan form edit data dan memperbarui data
-    public function edit_item($id)
+    public function edit_item($idMain)
     {
         // Ambil data produk berdasarkan id
-        $data['nbarang'] = $this->actmodel->unique_value('nama_barang');
-        $data['id_merek'] = $this->actmodel->unique_value('id_merek');
-        $data['by_id'] = $this->actmodel->get_by_id($id);
+        $data['ald'] = $this->actmodel->all_data();
         $data['merek'] = $this->actmodel->all_data_type();
-        $data['active_page'] = 'list'; // Menentukan halaman aktif
-
-        if (empty($data['by_id'])) {
-            show_404();
-        }
+        $data['lokasi'] = $this->actmodel->all_data_locate();
 
         // Aturan validasi
         $config = array(
@@ -68,21 +62,21 @@ class ItemControl extends My_Controller
         // Jika validasi gagal atau form belum disubmit, tampilkan form
         if ($this->form_validation->run() == FALSE) {
             if (validation_errors()) {
-                $this->session->set_flashdata('error', 'Mohon lengkapi semua.');
+                $this->session->set_flashdata('error', 'Mohon lengkapi semua data.');
             }
-            $this->render('Edit', 'f_temporary/v_list', $data);
+            redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         } else {
             // Jika validasi berhasil, perbarui data produk
             $data = array(
-                'id' => $id,
+                'id' => $idMain,
                 'nama_barang' => $this->input->post('nama_barang'),
                 'id_merek' => $this->input->post('merek'),
-                'lokasi' => $this->input->post('lokasi'),
+                'id_lokasi' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
                 'kondisi' => $this->input->post('kondisi')
             );
-            $this->actmodel->update_data($id, $data);
+            $this->actmodel->update_data($idMain, $data);
             redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         }
     }
@@ -93,8 +87,6 @@ class ItemControl extends My_Controller
         $data['ald'] = $this->actmodel->all_data();
         $data['merek'] = $this->actmodel->all_data_type();
         $data['lokasi'] = $this->actmodel->all_data_locate();
-        $data['active_page'] = 'list'; // Menentukan halaman aktif
-        $data['active_page'] = 'list'; // Menentukan halaman aktif
 
         // Aturan validasi
         $config = array(
@@ -135,7 +127,7 @@ class ItemControl extends My_Controller
         // Jika validasi gagal atau form belum disubmit, tampilkan form
         if ($this->form_validation->run() == FALSE) {
             if (validation_errors()) {
-                $this->session->set_flashdata('error', 'Mohon lengkapi semua.');
+                $this->session->set_flashdata('error', 'Mohon lengkapi semua data.');
             }
             redirect('minihalosisjatim/listcontrol/list'); // Arahkan ke halaman produk setelah memperbarui
         } else {
@@ -143,7 +135,7 @@ class ItemControl extends My_Controller
             $data = array(
                 'nama_barang' => $this->input->post('nama_barang'),
                 'id_merek' => $this->input->post('merek'),
-                'lokasi' => $this->input->post('lokasi'),
+                'id_lokasi' => $this->input->post('lokasi'),
                 'tgl_perolehan' => $this->input->post('tahun'),
                 'kode_barang' => $this->input->post('kode_barang'),
                 'kondisi' => $this->input->post('kondisi')

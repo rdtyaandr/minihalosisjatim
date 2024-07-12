@@ -1,0 +1,88 @@
+.list-group-item {
+    border: none;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    background-color: transparent;
+    }
+
+    .list-group-item:last-child {
+    border-bottom: none;
+    }
+
+    .list-group-item strong {
+    display: inline-block;
+    width: 150px;
+    font-weight: 600; /* Menyesuaikan ketebalan judul */
+    color: #333;
+    }
+
+    .list-group-item span {
+    color: #555;
+    }
+
+    .list-group-item:hover {
+    background-color: #f7f7f7; /* Warna latar belakang saat hover */
+    }
+
+    #detail-list li:nth-child(odd) {
+    background-color: #f7f7f7;
+    }
+
+    #detail-list li:nth-child(even) {
+    background-color: #ffffff;
+    }
+
+    #detail-list li:hover {
+    background-color: #e9ecef; /* Warna latar belakang saat hover */
+    }
+
+    #detail-list li:hover strong {
+    color: #000; /* Warna teks judul saat hover */
+    }
+
+    #detail-list li:hover span {
+    color: #333; /* Warna teks detail saat hover */
+    text-decoration: none;
+    }
+
+    /* Styling for "more detail >>" text */
+    .more-detail {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+    .more-detail:hover {
+    color: #0056b3;
+    }
+
+    /* Additional details styling */
+    .additional-details {
+    margin-top: 20px;
+    }
+
+    #additional-detail-list .list-group-item {
+    background-color: #f1f1f1;
+    }
+
+    #additional-detail-list .list-group-item:hover {
+    background-color: #ddd;
+    }
+
+    /* CSS untuk animasi slide down */
+@keyframes slide-down {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 1000px; /* Sesuaikan dengan konten */
+    }
+}
+
+.slide-down {
+    animation: slide-down 0.5s ease-out forwards;
+}

@@ -4,12 +4,14 @@ class ActModel extends My_Model
     //untuk nampilkan data dengan relasi
     public function all_data()
     {
-        $this->db->select('main.*, tb_merek.merek'); 
+        $this->db->select('main.*, tb_merek.merek, tb_lokasi.location');
         $this->db->from('main');
-        $this->db->join('tb_merek', 'tb_merek.id_merek = main.id_merek', 'left'); 
+        $this->db->join('tb_merek', 'tb_merek.id_merek = main.id_merek', 'left');
+        $this->db->join('tb_lokasi', 'tb_lokasi.id_location = main.id_lokasi', 'left'); // Join with tb_lokasi
         $this->db->where('(nup IS NULL OR nup IN (SELECT nup FROM main WHERE nup IS NOT NULL GROUP BY nup HAVING COUNT(*) = 1))', NULL, FALSE);
         return $this->db->get()->result();
     }
+
     public function all_data_type()
     {
         $this->db->select('*');
@@ -41,9 +43,9 @@ class ActModel extends My_Model
         $query = $this->db->get('main');
         return $query->row();
     }
-    public function update_data($id, $data)
+    public function update_data($idMain, $data)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id', $idMain);
         return $this->db->update('main', $data);
     }
 

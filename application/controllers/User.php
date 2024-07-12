@@ -14,22 +14,26 @@ class User extends MY_Controller
 
 	public function dashboard()
 	{
-		$data['title'] = 'Dashboard';
 		$role = (int)($this->Session->getUserType());
 
-		if ($role == USER_MEMBER)
+		if ($role == USER_MEMBER) {
+			$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 			$this->dashboard_member();
-		else if ($role == USER_AGENT)
+		} else if ($role == USER_AGENT) {
+			$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 			$this->dashboard_agent();
-		else if ($role == USER_MANAGER)
+		} else if ($role == USER_MANAGER) {
+			$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 			$this->dashboard_manager();
-		else if ($role == USER_ADMIN)
-			//$this->dashboard_manager();
+		} else if ($role == USER_ADMIN) {
+			$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 			$this->dashboard_manager();
+		}
 	}
 
 	public function dashboard_member()
 	{
+		$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 		$agent_id = $this->Session->getLoggedDetails()['username'];
 		$data['stats']['total_tickets'] = count($this->Tickets->get_ticket_where(array('owner' => $agent_id)));
 		$data['stats']['open_tickets'] = count($this->Tickets->get_ticket_where(array('owner' => $agent_id, 'status' => TICKET_STATUS_OPEN)));
@@ -43,6 +47,7 @@ class User extends MY_Controller
 
 	public function dashboard_agent()
 	{
+		$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 		$agent_id = $this->Session->getLoggedDetails()['username'];
 		$data['stats']['total_tickets'] = count($this->Tickets->get_ticket_where(array('owner' => $agent_id)));
 		$data['stats']['open_tickets'] = count($this->Tickets->get_ticket_where(array('owner' => $agent_id, 'status' => TICKET_STATUS_OPEN)));
@@ -56,6 +61,7 @@ class User extends MY_Controller
 
 	public function dashboard_manager()
 	{
+		$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 		$data['stats']['total_tickets'] = count($this->Tickets->getBy(null, array()));
 		$data['stats']['open_tickets'] = count($this->Tickets->getBy(null, array('status' => TICKET_STATUS_OPEN)));
 		$data['stats']['assigned_tickets'] = count($this->Tickets->getBy(null, array('status' => TICKET_STATUS_ASSIGNED)));
@@ -111,6 +117,7 @@ class User extends MY_Controller
 
 	public function dashboard_admin()
 	{
+		$data['active_page'] = 'dashboard'; // Menentukan halaman aktif
 		$agent_id = $this->Session->getLoggedDetails()['username'];
 		$data['stats']['total_tickets'] = count($this->Tickets->get_ticket_where(array('owner' => $agent_id)));
 		$data['stats']['open_tickets'] = count($this->Tickets->get_ticket_where(array('owner' => $agent_id, 'status' => TICKET_STATUS_OPEN)));

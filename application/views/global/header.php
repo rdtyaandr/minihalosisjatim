@@ -50,7 +50,8 @@
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/toastr/toastr.min.css">
 
     <!-- native design -->
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-style/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-style/detail.css">
 
     <!-- <script src="https://cdn.ckeditor.com/4.12.1/basic/ckeditor.js"></script> -->
     <!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"-->
@@ -83,6 +84,8 @@
     <!-- Chartjs -->
     <script src="<?= BASE_URL ?>assets/vendor/chart.js/Chart.min.js"></script>
 
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -105,6 +108,10 @@
         setTimeout(function() {
             $('.event-notification').fadeOut('fast');
         }, 5000); // <-- time in milliseconds
+
+        const merekData = <?= json_encode($merek); ?>;
+        const locateData = <?= json_encode($lokasi); ?>;
+        const baseUrlEditList = '<?= BASE_URL ?>itemcontrol/edit_item/';
     </script>
 
 </head>
