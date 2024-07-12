@@ -50,7 +50,9 @@
                                                 <button class="btn btn-warning btn-sm edit-locate-btn" data-id="<?= $value->id_location ?>" data-location="<?= $value->location ?>">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                                 </button>
-                                                <a href="<?= base_url('minihalosisjatim/managecontrol/delete_locate/' . $value->id_location) ?>" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                                                <button class="btn btn-danger btn-sm delete-btn-locate" data-id="<?= $value->id_location ?>">
+                                                    <i class="fa fa-trash-o" style="color: white;"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

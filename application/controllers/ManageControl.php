@@ -13,6 +13,7 @@ class ManageControl extends My_Controller
     public function type()
     {
         $data['ald'] = $this->typmodel->all_data();
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         $this->render('Type', 'f_temporary/v_type', $data);
     }
     public function add_type()
@@ -71,9 +72,9 @@ class ManageControl extends My_Controller
         }
     }
     
-    public function delete_item($id)
+    public function delete_item($idType)
     {
-        $this->typmodel->hapus($id);
+        $this->typmodel->hapus($idType);
         redirect('minihalosisjatim/managecontrol/type');
     }
 
@@ -86,6 +87,7 @@ class ManageControl extends My_Controller
     public function Location()
     {
         $data['ald'] = $this->LctModel->all_data();
+        $data['active_page'] = 'manage'; // Menentukan halaman aktif
         $this->render('Location', 'f_temporary/v_location', $data);
     }
     
@@ -145,9 +147,9 @@ class ManageControl extends My_Controller
         }
     }
 
-    public function delete_locate($id)
+    public function delete_locate($idLocate)
     {
-        $this->LctModel->hapus($id);
+        $this->LctModel->hapus($idLocate);
         redirect('minihalosisjatim/managecontrol/location');
     }
 }

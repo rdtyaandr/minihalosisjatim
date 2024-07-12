@@ -21,6 +21,7 @@ class ListControl extends My_Controller
     }
     public function all()
     {
+        $data['active_page'] = 'list'; // Menentukan halaman aktif
         $data['ald'] = $this->actmodel->all_data();
         $data['merek'] = $this->actmodel->all_data_type();
         $data['lokasi'] = $this->actmodel->all_data_locate();
@@ -28,6 +29,7 @@ class ListControl extends My_Controller
     }
     public function user()
     {
+        $data['active_page'] = 'profile'; // Menentukan halaman aktif
         $data['ald'] = $this->actmodel->all_data();
         $this->render('List', 'f_temporary/user/v_list', $data);
     }
@@ -37,5 +39,4 @@ class ListControl extends My_Controller
         $this->actmodel->hapus($id);
         redirect('minihalosisjatim/listcontrol/list');
     }
-
 }

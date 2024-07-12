@@ -24,9 +24,9 @@ class LctModel extends My_Model
         return $query->row();
     }
 
-    public function hapus($idLocation)
+    public function hapus($idLocate)
     {
-        $this->db->where('id_location', $idLocation);
+        $this->db->where('id_location', $idLocate);
         $this->db->delete('tb_lokasi');
     }
 }

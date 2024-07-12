@@ -6,10 +6,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <p><?= DEV_COMPANY_NAME ?> &copy; 2019-2020</p>
+                <p><?= DEV_COMPANY_NAME ?> &copy; 2024-2025</p>
             </div>
             <div class="col-sm-6 text-right">
-                <p>Powered by &nbsp;<a href="<?= DEV_COMPANY_URL ?>" class="external powered-logo"><img src="<?= BASE_URL ?>/assets/img/logo-white.png" width="65" alt="Tim DILAN BPS Provinsi Jawa Timur"></a></p>
+                <p>Powered by &nbsp;<a href="<?= DEV_COMPANY_URL ?>" class="external powered-logo"><img src="<?= BASE_URL ?>/assets/img/bps.png" width="40" alt="Tim DILAN BPS Provinsi Jawa Timur"></a></p>
                 <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             </div>
         </div>

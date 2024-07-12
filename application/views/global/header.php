@@ -52,6 +52,7 @@
     <!-- native design -->
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-style/style.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-style/detail.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/nav.css">
 
     <!-- <script src="https://cdn.ckeditor.com/4.12.1/basic/ckeditor.js"></script> -->
     <!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"-->

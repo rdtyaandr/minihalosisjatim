@@ -27,9 +27,9 @@ class TypModel extends CI_Model
         return $query->row();
     }
 
-    public function hapus($idMerek)
+    public function hapus($idType)
     {
-        $this->db->where('id_merek', $idMerek);
+        $this->db->where('id_merek', $idType);
         $this->db->delete('tb_merek');
     }
 }

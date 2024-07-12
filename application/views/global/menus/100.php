@@ -18,5 +18,7 @@
         <li><a href="<?= BASE_URL ?>user/add_user">Add User</a></li>
     </ul>
 </li>
+
 <li><a href="<?= BASE_URL ?>user/profile"> <i class="fa fa-user"></i>Profile </a></li>
+
 <li><a href="<?= BASE_URL ?>user/profile"> <i class="fa fa-user"></i>Super Admin </a></li>

@@ -43,6 +43,6 @@
         </div>
     </div>
     <div class="copyrights text-center text-dark">
-        <p>Powered by <a href="<?= DEV_COMPANY_URL ?>" class="external"><img src="<?= BASE_URL ?>assets/img/logo-red.png" width="65" alt="Tim DILAN BPS Provinsi Jawa Timur"></a></p>
+        <p>Powered by <a href="<?= DEV_COMPANY_URL ?>" class="external"><img src="<?= BASE_URL ?>assets/img/bps.png" width="40" alt="Tim DILAN BPS Provinsi Jawa Timur"></a></p>
     </div>
 </div>

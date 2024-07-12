@@ -15,6 +15,7 @@ class Tickets extends MY_Controller
     public function create_new()
     {
         $data['title'] = 'New Ticket';
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('New Ticket', 'ticket/create_new', $data);
     }
 
@@ -22,6 +23,7 @@ class Tickets extends MY_Controller
     {
         $data['title'] = 'All Tickets';
         $data['type']="all_tickets";
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('My Tickets', 'ticket/my_tickets', $data);
     }
 
@@ -29,6 +31,7 @@ class Tickets extends MY_Controller
     {
         $data['title'] = 'My Tickets';
         $data['type']="my_tickets";
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('My Tickets', 'ticket/my_tickets', $data);
     }
 
@@ -42,18 +45,21 @@ class Tickets extends MY_Controller
     {
         $data['title'] = 'Tickets followed by me';
         $data['type'] = "cc_to_me";
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('My Tickets', 'ticket/my_tickets', $data);
     }
     public function assigned_tickets()
     {
         $data['title'] = 'Assigned Tickets';
         $data['type'] = "assigned";
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('My Tickets', 'ticket/my_tickets', $data);
     }
     public function unassigned_tickets()
     {
         $data['title'] = 'Unassigned Tickets';
         $data['type'] = "unassigned";
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('My Tickets', 'ticket/my_tickets', $data);
     }
 
@@ -61,6 +67,7 @@ class Tickets extends MY_Controller
     {
         $data['title'] = 'Closed Tickets';
         $data['type'] = "closed";
+        $data['active_page'] = 'tickets'; // Menentukan halaman aktif
         $this->render('My Tickets', 'ticket/my_tickets', $data);
     }
 

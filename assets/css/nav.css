@@ -1,0 +1,10 @@
+/* Aturan untuk elemen menu di sidebar */
+.nav-item a:hover {
+    color: white !important; /* Warna teks saat di-hover */
+}
+
+/* Aturan untuk elemen menu yang aktif di sidebar */
+.nav-item.active a {
+    background-color: #1c1c1c !important; /* Warna latar belakang untuk elemen aktif */
+    color: white !important; /* Warna teks untuk elemen aktif */
+}

@@ -132,6 +132,7 @@ class User extends MY_Controller
 	public function profile()
 	{
 		$username = $this->Session->getLoggedDetails()['username'];
+		$data['active_page'] = 'profile'; // Menentukan halaman aktif
 		$data['user_details'] = $this->Users->getUserBy(array('username' => $username));
 		$this->render('Profile', 'user/profile', $data);
 	}
@@ -154,12 +155,14 @@ class User extends MY_Controller
 	{
 		$role = $this->Session->getLoggedDetails()['type'];
 		$filter = ['type <=' => $role];
+		$data['active_page'] = 'users'; // Menentukan halaman aktif
 		$data['user_list'] = $this->Users->getBy(null, $filter);
 		$this->render('All Users', 'user/list', $data);
 	}
-
+	
 	public function add_user()
 	{
+		$data['active_page'] = 'userss'; // Menentukan halaman aktif
 		$this->render('Add Users', 'user/add_user');
 	}
 

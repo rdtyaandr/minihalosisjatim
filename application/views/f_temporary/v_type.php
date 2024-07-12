@@ -51,9 +51,9 @@
                         <button class="btn btn-warning btn-sm edit-type-btn" data-id="<?= $value->id_merek ?>" data-merek="<?= $value->merek ?>">
                           <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
-                        <a href="<?= base_url('minihalosisjatim/managecontrol/delete_item/' . $value->id_merek) ?>" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">
-                          <i class="fa fa-trash-o"></i>
-                        </a>
+                        <button class="btn btn-danger btn-sm delete-btn-type" data-id="<?= $value->id_merek ?>">
+                          <i class="fa fa-trash-o" style="color: white;"></i>
+                        </button>
                       </td>
                     </tr>
                   <?php endforeach; ?>

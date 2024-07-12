@@ -232,7 +232,7 @@ input {
 }
 
 .bg-violet {
-  background: #796AEE !important;
+  background: #1c1c1c !important;
   color: #fff;
 }
 
@@ -281,11 +281,11 @@ input {
 }
 
 .text-violet {
-  color: #796AEE;
+  color: #1c1c1c;
 }
 
 .text-violet:hover {
-  color: #796AEE;
+  color: #1c1c1c;
 }
 
 .text-blue {
